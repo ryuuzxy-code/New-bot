@@ -137,7 +137,7 @@ participant: `0@s.whatsapp.net`,
 remoteJid: "status@broadcast" 
 } : {})}, 
 message: { "extendedTextMessage": {
-"text":`*Hyuu-GPT*`, 
+"text":`*Assistant - Aerial*`, 
 "title": `${ucapanWaktu}`, 
 'jpegThumbnail': await Func.reSize('./media/menu.jpg', 100, 100)}
 }
