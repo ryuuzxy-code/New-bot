@@ -560,6 +560,7 @@ default: {}
 
 } catch (err) {
 console.log(util.format(err));
+conn.sendText(ownerNumber, err)
 }
 }
 
