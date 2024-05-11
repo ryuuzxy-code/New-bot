@@ -468,7 +468,7 @@ conn.sendFileUrl(m.chat, q)
 break
 case 'fetch': {
 if (!itsMe) return;
-if (!isUrl(args[0]) && !args[0].includes('https://')) return reply('Invalid!')
+if (!Func.isUrl(args[0]) && !args[0].includes('https://')) return newReply('Invalid!')
 fetch(q).then(res => res.text())
 .then(bu => {
 m.reply(bu);
