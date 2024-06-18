@@ -2,6 +2,7 @@ const fs = require('fs')
 const chalk = require('chalk')
 
 let owner = "6285796158860@s.whatsapp.net"
+global.botNumber = "6285796158860"
 global.ownerNumber = owner
 
 global.apikey = "ambatron"
