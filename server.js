@@ -159,8 +159,24 @@ const child = async () => {
 
    if (pairingCode && !conn.authState.creds.registered) {
     console.clear()
-    
-    let code = await conn.requestPairingCode(`${global.botNumber}`)
+    console.log(chalk.cyan('╭──────────────────────────────────────···'));
+    console.log(`📨 ${chalk.redBright('Please type your WhatsApp number')}:`);
+    console.log(chalk.cyan('├──────────────────────────────────────···'));
+    let phoneNumber = await question(`   ${chalk.cyan('- Number')}: `);
+    console.log(chalk.cyan('╰──────────────────────────────────────···'));
+    phoneNumber = phoneNumber.replace(/[^0-9]/g, '')
+    if (!Object.keys(PHONENUMBER_MCC).some(v => phoneNumber.startsWith(v))) {
+        console.log(chalk.cyan('╭─────────────────────────────────────────────────···'));
+        console.log(`💬 ${chalk.redBright("Start with your country's WhatsApp code, Example 62xxx")}:`);
+        console.log(chalk.cyan('╰─────────────────────────────────────────────────···'));
+        console.log(chalk.cyan('╭──────────────────────────────────────···'));
+        console.log(`📨 ${chalk.redBright('Please type your WhatsApp number')}:`);
+        console.log(chalk.cyan('├──────────────────────────────────────···'));
+        phoneNumber = await question(`   ${chalk.cyan('- Number')}: `);
+        console.log(chalk.cyan('╰──────────────────────────────────────···'));
+        phoneNumber = phoneNumber.replace(/[^0-9]/g, '')
+    }
+    let code = await conn.requestPairingCode(phoneNumber)
     code = code?.match(/.{1,4}/g)?.join("-") || code
     console.log(chalk.cyan('╭──────────────────────────────────────···'));
     console.log(` 💻 ${chalk.redBright('Your Pairing Code')}:`);
